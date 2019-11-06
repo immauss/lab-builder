@@ -1,0 +1,2 @@
+dnf install virt-manager libvirt-python redhat-rpm-config python2-devel libguestfs-tools virt-install 
+pip install virtualbmc

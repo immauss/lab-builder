@@ -1,0 +1,2 @@
+resource_registry:
+  OS::TripleO::ControllerExtraConfigPre: /home/stack/templates/controller-pre.yaml

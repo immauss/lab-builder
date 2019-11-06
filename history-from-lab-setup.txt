@@ -1,0 +1,142 @@
+    1  hostnamectl 
+    2  hostnamectl --help 
+    3  hostnamectl set-hostname rhbeast
+    4  exit
+    5  ifconfig 
+    6  tcpdump -ni enp0s31f6 port 53 
+    7  tcpdump -ni wlp4s0 port 53 
+    8  nmap 
+    9  nmap 192.168.1.0/24 
+   10  ip add
+   11  nmap -sn 192.168.1.0/24 
+   12  exit
+   13  nmap -sn 192.168.1.0/24 
+   14  nmap -p 22  192.168.1.0/24 
+   15  exit
+   16  uptime
+   17  ip route 
+   18  sudo -i 
+   19  dnf install virtual-manager 
+   20  dnf install virt-manager 
+   21  rpm -qa | grep qemu
+   22  rpm -qa | grep kvm
+   23  dnf searach vbmc 
+   24  dnf search vbmc 
+   25  dnf search bmc 
+   26  cd
+   27  git
+   28  git clonse https://github.com/openstack/virtualbmc.git
+   29  git clone https://github.com/openstack/virtualbmc.git
+   30  cd virtualbmc/
+   31  ls
+   32  pip
+   33  pip install virtualbmc 
+   34  dnf install libvirt 
+   35  pip install virtualbmc 
+   36  rpm -qa | grep libvirt
+   37  dnf install libvirt-python 
+   38  rpm -qa | grep libvirt
+   39  pip install virtualbmc 
+   40  gcc
+   41  dnf install gcc 
+   42  y
+   43  gcc
+   44  dnf provides /usr/lib/rpm/redhat/redhat-hardened-cc1
+   45  dnf install redhat-rpm-config
+   46  pip install virtualbmc 
+   47  dnf provides Python.h 
+   48  dnf provides python.h 
+   49  ls
+   50  python setup.py 
+   51  less README.rst 
+   52  dnf install python2-devel 
+   53  pip install virtualbmc 
+   54  vbmc
+   55  history > history-to-install-vbmc-on-F29.txt
+   56  less history-to-install-vbmc-on-F29.txt 
+   57  cd
+   58  ip add
+   59  systemctl status ssh
+   60  systemctl status sshd
+   61  systemctl start sshd
+   62  systemctl enable sshd
+   63  cd
+   64  dnf install virtual-machine-manager
+   65  dnf update -y 
+   66  reboot 
+   67  pwd
+   68  cd /home/
+   69  ls
+   70  mkdir virt-images
+   71  ls -ld /var/lib/libvirt/images
+   72  cd ~scott/
+   73  cd lab-builder/
+   74  ls
+   75  vim setup-env.sh 
+   76  cd /home/
+   77  ls -l
+   78  cd ~scott/lab-builder/
+   79  ls
+   80  ./setup-env.sh 
+   81  vim setup-env.sh 
+   82  ./setup-env.sh 
+   83  virsh list --all 
+   84  vim setup-env.sh 
+   85  mv ~scott/Downloads/rhel-server-7.6-x86_64-kvm.qcow2 .
+   86  ls
+   87  ls -l
+   88  ./setup-env.sh 
+   89  dnf provides virt-resize 
+   90  dnf install libguestfs-tools 
+   91  ./setup-env.sh 
+   92  ls 
+   93  cp rhel-server-7.6-x86_64-kvm.qcow2 rhel7-guest-official.qcow2
+   94  ls -l
+   95  ./setup-env.sh 
+   96  ls -l
+   97  vim setup-env.sh 
+   98  qemu-img 
+   99  ls
+  100  grep qemu setup-env.sh 
+  101  qemu-img create -f qcow2 undercloud.qcow2 60G
+  102  ls
+  103  grep virt-resize setup-env.sh 
+  104  virt-resize --expand /dev/sda1 rhel7-guest-official.qcow2 undercloud.qcow2 
+  105  cd /var/lib/libvirt/
+  106  ls -I
+  107  man ls
+  108  ls -lZ 
+  109  cd /home
+  110  chcon system_u:object_r:virt_image_t:s0 virt-images/
+  111  ls -lZ 
+  112  cd
+  113  cd ~scott/lab-builder/
+  114  virt-resize --expand /dev/sda1 rhel7-guest-official.qcow2 undercloud.qcow2 
+  115  export LIBGUESTFS_BACKEND=direct
+  116  virt-resize --expand /dev/sda1 rhel7-guest-official.qcow2 undercloud.qcow2 
+  117  vim setup-env.sh 
+  118  cd /home/virt-images/
+  119  ls
+  120  ls -l 
+  121  rm * 
+  122  pwd
+  123  cd
+  124  cd ~scott/lab-builder/
+  125  ls
+  126  rm undercloud.qcow2 
+  127  ./setup-env.sh 
+  128  ls /home/virt-images/
+  129  ls -l /home/virt-images/
+  130  pwd
+  131  ls
+  132  mv rhel7-guest-official.qcow2 /home/virt-images/
+  133  ./setup-env.sh 
+  134  virsh list --all 
+  135  dnf provides virt-install 
+  136  dnf install -y virt-install 
+  137  ls /home/virt-images/
+  138  ls -l /home/virt-images/
+  139  ./setup-env.sh 
+  140  virsh list --all 
+  141  history history-from-lab-setup.txt
+  142  history > history-from-lab-setup.txt

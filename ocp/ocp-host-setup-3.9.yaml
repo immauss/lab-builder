@@ -1,0 +1,78 @@
+---
+- hosts: OCPVMS
+  become: true
+  gather_facts: false
+  tasks:
+  - name: Wait for system to become reachable
+    wait_for_connection:
+      delay: 5
+      timeout: 300
+  - name: Install katello-consumer
+    yum:
+      name: http://sat6.khome.net/pub/katello-ca-consumer-latest.noarch.rpm
+      state: present
+  - name: Clean old subscription-manager info
+    shell: subscription-manager clean
+  - name: Register the VM
+    redhat_subscription:
+      state: present
+      activationkey: ocp3
+      org_id: Default_Organization
+      force_register: yes
+      server_hostname: sat6.khome.net
+      server_insecure: yes
+  - name: Disable All Repos
+    rhsm_repository:
+      name: '*'
+      state: disabled
+  - name: Enable RHEL Server RPMS
+    rhsm_repository:
+      name: 
+        - rhel-7-server-rpms
+        - rhel-7-server-extras-rpms
+        - rhel-7-server-ose-3.9-rpms
+        - rhel-7-server-ansible-2.4-rpms
+        - rhel-7-server-rh-common-rpms
+        - rhel-7-fast-datapath-rpms
+          #- rhel-ha-for-rhel-7-server-rpms
+      state: enabled     
+  - name: Install packages
+    yum:
+      name:
+        - wget
+        - git
+        - net-tools
+        - bind-utils
+        - yum-utils
+        - iptables-services
+        - bridge-utils
+        - bash-completion
+        - kexec-tools
+        - sos
+        - psacct
+        - docker-1.13.1
+        - openshift-ansible
+        - bind-chroot
+        - vim
+        - tmux
+        - atomic
+        - atomic-openshift-utils
+      state: present
+  - name: Upgrade everything
+    yum: 
+      name: '*'
+      state: latest
+  - name: Docker Storage Setup
+    copy: 
+      src: docker-storage-setup
+      dest: /etc/sysconfig/docker-storage-setup
+      force: yes
+  - name: Run docker storage setup
+    shell: /usr/bin/docker-storage-setup
+  - name: Reboot everything
+    reboot:
+  - name: Wait for system to become reachable
+    wait_for_connection:
+      delay: 60
+      timeout: 300
+

@@ -1,0 +1,62 @@
+---
+- hosts: OCPVMS
+  become: true
+  gather_facts: false
+  tasks:
+  - name: Register the VM
+    redhat_subscription:
+      state: present
+      username: xxxxxxxx
+      password: 'XXXXXXXXXXXX'
+      pool_ids: 8a85f9833e1404a9013e3cddf95a0599
+  - name: Disable All Repos
+    rhsm_repository:
+      name: '*'
+      state: disabled
+  - name: Enable RHEL Server RPMS
+    rhsm_repository:
+      name: rhel-7-server-rpms
+      state: enabled 
+  - name: Enable RHEL Server RPMS
+    rhsm_repository:
+      name: rhel-7-server-extras-rpms
+      state: enabled 
+  - name: enable OSE Repo
+    rhsm_repository:
+      name: rhel-7-server-ose-3.11-rpms
+      state: enabled 
+  - name: Enable Ansible Repo
+    rhsm_repository:
+      name: rhel-7-server-ansible-2.6-rpms
+      state: enabled 
+  - name: Enable OpenStack 13 Repo
+    rhsm_repository:
+      name: rhel-7-server-openstack-13-rpms
+      state: enabled 
+  - name: Enable RHEL Server common Repo
+    rhsm_repository:
+      name: rhel-7-server-rh-common-rpms
+      state: enabled 
+  - name: Enable RHEL Server HA Repo
+    rhsm_repository:
+      name: rhel-ha-for-rhel-7-server-rpms
+      state: enabled     
+  - name: Install packages
+    yum:
+      name:
+        - wget
+        - git
+        - net-tools
+        - bind-utils
+        - yum-utils
+        - iptables-services
+        - bridge-utils
+        - bash-completion
+        - kexec-tools
+        - sos
+        - psacct
+      state: present
+  - name: Upgrade everything
+    yum: 
+      name: '*'
+      state: latest

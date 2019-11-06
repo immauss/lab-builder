@@ -1,0 +1,10 @@
+parameter_defaults:
+  HostnameMap:
+    overcloud-controller-0: lab-controller01
+    overcloud-controller-1: lab-controller02
+    overcloud-controller-2: lab-controller03
+    overcloud-compute-0: lab-compute01
+    overcloud-compute-1: lab-compute02
+    overcloud-cephstorage-0: lab-ceph01
+    overcloud-cephstorage-1: lab-ceph02
+    overcloud-cephstorage-2: lab-ceph03

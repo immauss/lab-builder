@@ -1,0 +1,17 @@
+---
+- hosts: all
+  vars:
+    pubkey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPliO/uXOim5k7UrRI2V/fK5oj7fAfUWKvFrYROMa9H5L5LveiLnKbjGpTiVV1cd1BUCHM3M8MNUJU4opGmya/GdTgiUd6owMArtInbUSAmx0gA5Jn66Hz4iuhuFMyzTjz4qqE0FNweU17mal3nPdFF+4K4S9Ua4pMW10pA1XkwfszYA09vICcNS1RSuFSSB4w98xNr7yTzCGpZk6aBf2d/zkOPoLmgC+kSyg5dV2B3zWmL21vTdLKOHEJORuXgdMKlon4p0HHxC2cf2Ictvo0gHn5jC02zCZNye96oyp9ljNyIBDFDJ91I1jXUdgDKmyTz9d2MtNiz6hCAF8MUKqj scott@rhpc-01'
+  tasks:
+  - name: make directory
+    file:
+      path: "/home/scott/.ssh"
+      state: directory
+  - name: create empty file
+    file:
+      path: "/home/scott/.ssh/authorized_keys"
+      state: touch
+  - name: put pubkey
+    lineinfile:
+      path: "/home/scott/.ssh/authorized_keys"
+      line: "{{ pubkey }}"

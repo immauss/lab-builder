@@ -1,0 +1,5 @@
+parameter_defaults:
+  ControllerExtraConfig:
+    cinder::config::cinder_config:
+        max_luns_per_storage_group:
+            value: 240

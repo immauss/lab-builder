@@ -1,0 +1,6 @@
+[OCPVMS]
+#ansible.ocp.khome.net ansible_user=root ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+master.ocp.khome.net ansible_user=root ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+node1.ocp.khome.net ansible_user=root ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+node2.ocp.khome.net ansible_user=root ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+

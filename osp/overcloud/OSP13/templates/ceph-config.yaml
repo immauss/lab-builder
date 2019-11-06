@@ -1,0 +1,17 @@
+parameter_defaults:
+  CephConfigOverrides:
+    max_open_files: 131072
+  CephAnsibleDisksConfig:
+    devices:
+      - /dev/vdb
+      - /dev/vdc
+      - /dev/vdd
+    #osd_scenario: lvm
+    osd_scenario: collocated
+    #osd_objectstore: bluestore
+
+  # CephAnsiblePlaybookVerbosity: 3
+  CephAnsibleEnvironmentVariables:
+    ANSIBLE_SSH_RETRIES: '6'
+  CephPoolDefaultSize: 3
+  CephPoolDefaultPgNum: 64
